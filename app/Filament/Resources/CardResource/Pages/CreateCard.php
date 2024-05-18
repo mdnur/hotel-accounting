@@ -9,4 +9,5 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateCard extends CreateRecord
 {
     protected static string $resource = CardResource::class;
+    protected static bool $canCreateAnother = false;
 }

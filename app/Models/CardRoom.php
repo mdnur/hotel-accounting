@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class CardRoom extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+
     public function card()
     {
         return $this->belongsTo(Card::class);

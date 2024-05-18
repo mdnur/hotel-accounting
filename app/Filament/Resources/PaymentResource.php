@@ -37,6 +37,9 @@ class PaymentResource extends Resource
                 Forms\Components\TextInput::make('user_id')
                     ->required()
                     ->numeric(),
+                Forms\Components\TextInput::make('card_id')
+                    ->required()
+                    ->numeric(),
             ]);
     }
 
@@ -55,6 +58,9 @@ class PaymentResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('user_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('card_id')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
