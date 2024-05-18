@@ -20,11 +20,11 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        // User::create([
-        //     'name' => 'Mohammad Nur',
-        //     'email' => 'mdnur701@gmail.com',
-        //     'password'=> Hash::make('password'),
-        // ]);
+        User::create([
+            'name' => 'Mohammad Nur',
+            'email' => 'mdnur701@gmail.com',
+            'password'=> Hash::make('password'),
+        ]);
 
 
 
