@@ -18,9 +18,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->foreignId('payment_type_id')->constrained();
             $table->foreignId('user_id')->constrained();
-
-            // $table->foreign('payment_type_id')->references('id')->on('payment_types');
-            // $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('card_id')->constrained();
             $table->timestamps();
         });
     }
