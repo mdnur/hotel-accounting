@@ -2,22 +2,24 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\RoomResource\Pages;
-use App\Filament\Resources\RoomResource\RelationManagers;
-use App\Models\Room;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use App\Models\Room;
 use Filament\Tables;
+use App\Models\RoomType;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\RoomResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\RoomResource\RelationManagers;
 
 class RoomResource extends Resource
 {
     protected static ?string $model = Room::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = "Room Management";
 
     public static function form(Form $form): Form
     {
@@ -26,9 +28,9 @@ class RoomResource extends Resource
                 Forms\Components\TextInput::make('room_no')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('room_type_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('room_type_id')
+                    ->options(RoomType::pluck('name', 'id'))
+                    ->required(),
             ]);
     }
 

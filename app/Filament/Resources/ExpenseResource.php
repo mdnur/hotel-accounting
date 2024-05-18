@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ExpenseResource\Pages;
 use App\Filament\Resources\ExpenseResource\RelationManagers;
 use App\Models\Expense;
+use App\Models\ExpenseType;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -18,14 +19,15 @@ class ExpenseResource extends Resource
     protected static ?string $model = Expense::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = "Expense Management";
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('expense_type_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('expense_type_id')
+                    ->options(ExpenseType::pluck('name', 'id'))
+                    ->required(),
                 Forms\Components\TextInput::make('amount')
                     ->required()
                     ->numeric(),
