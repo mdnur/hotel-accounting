@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class CardRoom extends Model
 {
     use HasFactory;
+    public function card()
+    {
+        return $this->belongsTo(Card::class);
+    }
+    public function room()
+    {
+        return $this->belongsTo(Room::class);
+    }
 }
